@@ -1,6 +1,6 @@
 module.exports = {
 
-database : "mongodb://localhost:27017/songsDatabase" ,
+database : "mongodb://localhost:27017/musicPlaylist" ,
 secret : 'anything'
 
 }
