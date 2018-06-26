@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head
+</head>
 <% include ./header %>
 <body>
 <div class="container">
@@ -17,15 +17,17 @@
   <form method="POST" action="/songs/add">
     <div class="form-group">
       <label>Title:</label>
-      <input type="text" class="form-control" id="email" placeholder="Title..." name="title">
+      <input type="text" class="form-control" id="email" placeholder="Title..." name="title" required>
     </div>
     <div class="form-group">
       <label for="pwd">Artist:</label>
-      <input type="text" class="form-control" id="pwd" placeholder="Artist..." name="artist">
+      <input type="text" class="form-control" id="pwd" placeholder="Artist..." name="artist" required>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+
+<% include ./footer %>
 
 </body>
 </html>

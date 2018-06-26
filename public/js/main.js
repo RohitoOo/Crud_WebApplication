@@ -8,7 +8,7 @@ const id = $target.attr('data-id') ;
 
 $.ajax({
   type: 'DELETE',
-  url : '/song/'+id,
+  url : '/songs/'+id,
   success : function(response){
     alert('Deleteting Songs');
     window.location.href='/home'

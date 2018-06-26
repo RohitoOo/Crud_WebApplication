@@ -18,11 +18,11 @@
     <% songs.forEach(function(song){ %>
     <div  class="container list-group-item song " style="border-radius: 20px"  >
 
-    <div onclick="location.href=' /song/' + '<%=song._id%>' " >
-    <li>  Title : <%= song.title %> </li>
-    <li>  Artist : <%= song.artist %> </li>
+    <div onclick="location.href=' /songs/' + '<%=song._id%>' " >
+    <li>  Title : <%= song.title %> </li> <br>
+    <li>  Artist : <%= song.artist %> </li> <br>
     </div>
-   <a  target="_blank"  href="<%= song.url %>"> Listen Now! </a> 
+   <a  target="_blank"  href="<%= song.url %>"> Listen Now! </a> &nbsp &nbsp
     <button class="btn btn-danger deteleSong" href="/home" data-id=<%= song._id %>> Delete </button>
 
 
@@ -34,6 +34,9 @@
 </div>
 
 </body>
+
+<% include ./footer %>
+
 <script src="ejs.min.js"></script>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
