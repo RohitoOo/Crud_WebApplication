@@ -21,8 +21,8 @@
     <div onclick="location.href=' /song/' + '<%=song._id%>' " >
     <li>  Title : <%= song.title %> </li>
     <li>  Artist : <%= song.artist %> </li>
-    <li> Youtube :  <a  target="_blank"  href="<%= song.url %>"> Listen Now! </a> </li>
     </div>
+   <a  target="_blank"  href="<%= song.url %>"> Listen Now! </a> 
     <button class="btn btn-danger deteleSong" href="/home" data-id=<%= song._id %>> Delete </button>
 
 

@@ -98,9 +98,10 @@ app.post('/songs/add' , ( req, res ) => {
     let newSong = new Song();
 
     newSong.title = req.body.title;
+    req.body.title = req.body.title.replace(/\s/g,'');
     newSong.artist = req.body.artist;
     req.body.artist = req.body.artist.replace(/\s/g,'')
-    newSong.url = "https://www.youtube.com/" + req.body.artist;
+    newSong.url = "https://www.google.com/search?q=" + req.body.artist + "+" + req.body.title;
 
     newSong.save(function (err)  {
       if(err) {
