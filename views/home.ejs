@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <% include ./header %>
+</head>
+<body>
+  <div >
+
+  <ul style="list-style-type:none" class="list-group">
+
+    <% songs.forEach(function(song){ %>
+    <div  class="container list-group-item song " style="border-radius: 20px"  >
+
+    <div onclick="location.href=' /song/' + '<%=song._id%>' " >
+    <li>  Title : <%= song.title %> </li>
+    <li>  Artist : <%= song.artist %> </li>
+    <li> Youtube :  <a  target="_blank"  href="<%= song.url %>"> Listen Now! </a> </li>
+    </div>
+    <button class="btn btn-danger deteleSong" href="/home" data-id=<%= song._id %>> Delete </button>
+
+
+    </div>  </br>
+    <% })%>
+
+  </ul>
+
+</div>
+
+</body>
+<script src="ejs.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+
+
+</html>
