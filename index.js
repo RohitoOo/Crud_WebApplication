@@ -4,6 +4,7 @@ const session = require('express-session')
 const ejs = require('ejs')
 const path = require('path');
 const bodyParser = require('body-parser');
+const passport = require('passport')
 const config = require('./config/database')
 
 
@@ -41,9 +42,30 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-app.get('/' , (req,res) => {
-  res.redirect('home')
-})
+
+// Passport config
+
+require('./config/passport')(passport)
+
+
+// Passport MiddleWare
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*' , function (req,res, next)   {
+
+  res.locals.user = req.user || null ;
+    // console.log("index.js : " + req.locals.user)
+  next();
+});
+
+
+
+//
+// app.get('/' , (req,res) => {
+//   res.redirect('home')
+// })
 
 
 // Bring in models
@@ -51,6 +73,8 @@ let Song = require("./models/song.js")
 
 // Home Page Route
 app.get('/home', (req, res) => {
+
+
   Song.find({}, (err, songs) => {
     res.render('home', {songs: songs})
   })
@@ -84,15 +108,15 @@ app.post('/edit/:id', (req, res) => {
 })
 
 
+// Router Files
+
 let songs = require('./router/songs');
 app.use('/songs' , songs)
 
+let users = require('./router/users')
+app.use('/users' , users)
 
-// app.get('*' , (req,res) => {
-//   res.redirect('home')
-// });
 
-// Router Files
 
 
 app.listen('3000', () => {
