@@ -10,9 +10,10 @@
 </head>
 <% include ./header %>
 <body>
+    <%- messages('message', locals) %>
 <div class="container">
-  <h2>Add Song To Playlist</h2>
 
+  <h2>Add Song To Playlist</h2>
  <!-- POST request -->
   <form method="POST" action="/songs/add">
     <div class="form-group">
@@ -28,6 +29,5 @@
 </div>
 
 <% include ./footer %>
-
 </body>
 </html>

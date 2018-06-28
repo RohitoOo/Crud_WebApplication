@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const passport = require('passport')
 
 // Bring in models
 let Song = require("../models/song.js")
@@ -32,7 +32,8 @@ router.post('/add', (req, res) => {
     if (err) {
       console.log(err)
     } else {
-      res.redirect('../home')
+      req.flash('success' , 'Song Added')
+      res.redirect('/songs/addSong')
     }
   })
 })
@@ -52,5 +53,17 @@ router.delete('/:id', (req, res) => {
     }
   })
 });
+
+// Access Control
+
+function ensureAuthenticated(req,res,next){
+if(req.user){
+  console.log(user)
+  return next();
+}else{
+  res.redirect('/users/login')
+}
+
+}
 
 module.exports = router;

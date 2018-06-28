@@ -13,19 +13,17 @@
 
   <nav class="navbar navbar-default" >
     <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#"> Rohito's Playlist ( Dynamic Name )</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li ><a href="/users/register">Register</a></li>
+
+      <ul class="nav navbar-nav ">
+      <h3> <li ><a href="/users/register">Register</a></li> </h3>
       </ul>
     </div>
   </nav>
 
 
 <div class="container">
-  <h2>Login To Your Playlist</h2>
-
+<%- messages('message', locals) %>
+<h2>Login To Your Playlist</h2>
  <!-- POST request -->
   <form method="POST" action="/users/login">
     <div class="form-group">
@@ -45,6 +43,8 @@
       <p id="length" class="invalid">Minimum <b>8 characters</b></p>
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
+  <a href="/users/register"> <button type="button" class="btn btn-primary">Register</button></a>
+
   </form>
 </div>
 <% include ./footer %>

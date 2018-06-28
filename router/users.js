@@ -18,7 +18,6 @@ res.render('register')
 
 // Loging form
 router.get('/login' , (req,res) => {
-console.log(req.user)
 res.render('login')
 
 })
@@ -27,9 +26,10 @@ res.render('login')
 
 router.post('/login' , (req,res, next)=>{
 
+  req.flash('success' , 'Login Successful :) Add A New Song To Your Playlist')
+
+
 passport.authenticate('local' , {
-
-
   successRedirect: '/home',
   failureRedirect: '/users/login'
 })(req,res,next);
@@ -63,6 +63,7 @@ bcrypt.genSalt(10, (err,salt) => {
       if(err){
         console.log(err);
       }else {
+        req.flash('success' , 'User Registered')
         res.redirect('login')
       }
     })

@@ -1,11 +1,13 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const session = require('express-session')
 const ejs = require('ejs')
 const path = require('path');
 const bodyParser = require('body-parser');
 const passport = require('passport')
 const config = require('./config/database')
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const session = require('express-session')
 
 
 mongoose.connect(config.database)
@@ -42,8 +44,27 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
+app.use(expressValidator());
 
-// Passport config
+// Session
+
+app.use(
+  session({
+    resave: true,
+    saveUninitialized: true,
+    secret: "secret"
+  })
+);
+
+
+// Express Message Flash Middleware
+
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
+
 
 require('./config/passport')(passport)
 
@@ -53,6 +74,13 @@ require('./config/passport')(passport)
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
+
+
+
+// Create Global Variable User
+
 app.get('*' , function (req,res, next)   {
 
   res.locals.user = req.user || null ;
@@ -60,23 +88,28 @@ app.get('*' , function (req,res, next)   {
   next();
 });
 
+app.get('/testing' , (req,res) => {
 
+res.send("req.user = " + req.user)
 
-//
-// app.get('/' , (req,res) => {
-//   res.redirect('home')
-// })
+})
 
 
 // Bring in models
 let Song = require("./models/song.js")
 
 // Home Page Route
-app.get('/home', (req, res) => {
+app.get('/home',  (req, res) => {
 
+username = req.user.username.toUpperCase() ;
 
   Song.find({}, (err, songs) => {
-    res.render('home', {songs: songs})
+    res.render('home', {
+      songs: songs,
+      username : username
+
+
+  })
   })
 });
 
@@ -102,6 +135,7 @@ app.post('/edit/:id', (req, res) => {
     if (err) {
       console.log(err)
     } else {
+      req.flash('success' , 'Updated')
       res.redirect('../home')
     }
   })

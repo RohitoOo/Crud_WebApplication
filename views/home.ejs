@@ -11,9 +11,14 @@
    <% include ./header %>
 </head>
 <body>
+
+    <%- messages('message', locals) %>
+
   <div >
 
+
   <ul style="list-style-type:none" class="list-group">
+
 
     <% songs.forEach(function(song){ %>
     <div  class="container list-group-item song " style="border-radius: 20px"  >
