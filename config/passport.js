@@ -1,16 +1,20 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-let User = require('../models/user');
 const config = require('../config/database');
 const bcrypt = require('bcryptjs');
 
+
+// User Model
+
+let User = require('../models/user');
+
+
 module.exports = (passport) => {
 
-  // Local Strategy
-
+// Local Strategy
   passport.use(new LocalStrategy( (username, password, done) => {
 
-    //Match UserName
+// Match UserName
 
     let query = {
       username: username
@@ -28,7 +32,7 @@ module.exports = (passport) => {
       bcrypt.compare(password, user.password, function(err, isMatch) {
 
         if (err) {
-          console.log(err)
+          throw err;
         }
         if (isMatch) {
           return done(null, user)
@@ -41,13 +45,8 @@ module.exports = (passport) => {
 
 
   })
-
-
 )
-
-
 };
-
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
