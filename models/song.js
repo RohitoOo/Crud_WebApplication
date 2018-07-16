@@ -11,6 +11,9 @@ artist: {
 },
 url : {
   type : String
+},
+user : {
+  type : String
 }
 
 });

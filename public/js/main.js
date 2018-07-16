@@ -10,7 +10,7 @@ $.ajax({
   type: 'DELETE',
   url : '/songs/'+id,
   success : function(response){
-    alert('Deleteting Songs');
+    alert('Deleteting Song');
     window.location.href='/home'
   },
   error: function (err) {
@@ -22,7 +22,7 @@ $.ajax({
 
 });
 
-// Password Validation 
+// Password Validation
 
 var myInput = document.getElementById("psw");
 var letter = document.getElementById("letter");

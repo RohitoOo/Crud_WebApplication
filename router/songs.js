@@ -27,6 +27,7 @@ router.post('/add', (req, res) => {
   newSong.artist = req.body.artist;
   req.body.artist = req.body.artist.replace(/\s/g, '')
   newSong.url = "https://www.google.com/search?q=" + req.body.artist + "+" + req.body.title;
+  newSong.user = req.body.user
 
   newSong.save(function(err) {
     if (err) {
