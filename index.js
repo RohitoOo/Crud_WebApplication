@@ -103,19 +103,16 @@ let Song = require("./models/song.js")
 // Home Page Route
 app.get('/home',  (req, res) => {
 
-username = req.user.username.toUpperCase() ;
+username = req.user || null
 
   Song.find({}, (err, songs) => {
     res.render('home', {
       songs: songs,
-      username : username
-
-
+      username : username,
+      user : req.user
   })
   })
 });
-
-
 
 // Update & Edit Song Route
 app.post('/edit/:id', (req, res) => {
