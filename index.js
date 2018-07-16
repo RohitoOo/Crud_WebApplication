@@ -105,11 +105,15 @@ app.get('/home',  (req, res) => {
 
 username = req.user || null
 
-  Song.find({}, (err, songs) => {
+user = req.user._id.toString()
+
+
+
+  Song.find({user : user}, (err, songs) => {
     res.render('home', {
       songs: songs,
       username : username,
-      user : req.user
+
   })
   })
 });
