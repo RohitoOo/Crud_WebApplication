@@ -26,9 +26,6 @@ res.render('login')
 
 router.post('/login' , (req,res,next)=>{
 
-  req.flash('success' , 'Login Successful :) Add A New Song To Your Playlist')
-
-
 passport.authenticate('local' , {
   successRedirect: '/home',
   failureRedirect: '/users/login',
