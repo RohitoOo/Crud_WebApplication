@@ -155,8 +155,7 @@ let users = require('./router/users')
 app.use('/users' , users)
 
 
-var port = process.env.port || 3000;
 
-app.listen(port, () => {
-  console.log('We Live on Port :' + port)
+app.listen(process.env.PORT || 3000, () => {
+  console.log('Express Server is Live')
 })
