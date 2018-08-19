@@ -155,8 +155,8 @@ let users = require('./router/users')
 app.use('/users' , users)
 
 
-var port = process.env.port || 3000
+var port = process.env.port || 3000;
 
 app.listen(port, () => {
-  console.log('We Live on Port 3000')
+  console.log('We Live on Port :' + port)
 })
