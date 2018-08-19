@@ -114,11 +114,12 @@ user = req.user._id.toString()
       songs: songs,
       username : username,
 
-  })
+    })
   })
 });
 
 // Update & Edit Song Route
+
 app.post('/edit/:id', (req, res) => {
 
   let song = {};
@@ -154,8 +155,8 @@ let users = require('./router/users')
 app.use('/users' , users)
 
 
+var port = process.env.port || 3000
 
-
-app.listen('3000', () => {
+app.listen(port, () => {
   console.log('We Live on Port 3000')
 })

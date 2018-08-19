@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node index.js"
   },
   "author": "Rohito",
   "license": "ISC",
@@ -18,9 +18,11 @@
     "express-session": "^1.15.6",
     "express-validator": "^5.2.0",
     "mongoose": "^5.1.6",
-    "nodemon": "^1.17.5",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }
