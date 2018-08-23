@@ -2,7 +2,7 @@
 
 This is a basic **Create Read Update Delete** Application created from scratch.
 
-### Experience this Application!  [Live Link ](http://206.189.134.50:3000/users/register)
+### Experience this Application!  [Live Link ](https://mysterious-forest-55765.herokuapp.com/users/register)
 
 Functionalities include :
 
