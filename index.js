@@ -79,8 +79,6 @@ app.get('/', function(req, res){
     res.redirect('/users/login')
 });
 
-
-
 // Create Global Variable User
 
 app.get('*' , function (req,res, next)   {
@@ -90,32 +88,30 @@ app.get('*' , function (req,res, next)   {
   next();
 });
 
-app.get('/testing' , (req,res) => {
-
-res.send("req.user = " + req.user)
-
-})
-
-
 // Bring in models
 let Song = require("./models/song.js")
 
 // Home Page Route
 app.get('/home',  (req, res) => {
 
-username = req.user || null
+if(req.user){
+  username = req.user || null
 
-user = req.user._id.toString()
-
-
-
-  Song.find({user : user}, (err, songs) => {
-    res.render('home', {
-      songs: songs,
-      username : username,
-
+  user = req.user._id.toString()
+  
+    Song.find({user : user}, (err, songs) => {
+      res.render('home', {
+        songs: songs,
+        username : username,
+  
+      })
     })
-  })
+}else {
+  res.redirect('/users/login')
+  console.log("Redirected To Login page")
+}
+
+
 });
 
 // Update & Edit Song Route

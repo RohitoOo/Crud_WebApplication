@@ -59,7 +59,6 @@ router.delete('/:id', (req, res) => {
 
 function ensureAuthenticated(req,res,next){
 if(req.user){
-  console.log(user)
   return next();
 }else{
   res.redirect('/users/login')

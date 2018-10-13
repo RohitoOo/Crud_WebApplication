@@ -70,8 +70,9 @@ router.post('/add', (req, res) => {
 // Logout Route
 
 router.get('/logout', (req, res) => {
-
+  req.session.user = null
   req.logout();
+   // Redirect To Login Page 
   res.redirect('login')
 
 });
